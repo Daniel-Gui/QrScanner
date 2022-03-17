@@ -35,21 +35,34 @@
     <div class="container">
         <h2>Sartec Scanner</h2>
         <div class="camera" id="reader">
-
+            <button id="iniciarscanner">Scannear</button>
         </div>
-       <button>Scannear</button>
+       
     </div>
     <script src="assets/js/html5-qrcode.min.js"></script>
     <script>
-        function onScanSuccess(decodedText, decodedResult) {
-            console.log(`Code scanned = ${decodedText}`, decodedResult);
-        }
-        var html5QrcodeScanner = new Html5QrcodeScanner(
-            "qr-reader", {
-                fps: 10,
-                qrbox: 250
-            });
-        html5QrcodeScanner.render(onScanSuccess);
+  const html5QrCode = new Html5Qrcode("iniciarscanner","reader");
+// File based scanning
+const fileinput = document.getElementById('qr-input-file');
+fileinput.addEventListener('change', e => {
+  if (e.target.files.length == 0) {
+    // No file selected, ignore 
+    return;
+  }
+
+  const imageFile = e.target.files[0];
+  // Scan QR Code
+  html5QrCode.scanFile(imageFile, true)
+  .then(decodedText => {
+    // success, use decodedText
+    console.log(decodedText);
+  })
+  .catch(err => {
+    // failure, handle it.
+    console.log(`Error scanning file. Reason: ${err}`)
+  });
+});
+
     </script>
 </body>
 
