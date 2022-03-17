@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Sartec Scanner</title>
   <style>
     html, body {
       width: 100%;
@@ -26,11 +26,20 @@
       color: white;
       padding: 0.5rem;
     }
+
+    @media (max-height: 768px) {
+      .camera {
+        width: 300px;
+        height: auto;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="container">
+  <img src="assets/img/logoverticalazul.svg" width="100" alt="logo sartec">
+  <h1>Sartec Scanner</h1>
   <div class="camera" id="reader"></div>
   <h4>Resultado:</h4>
   <div id="result"></div>
